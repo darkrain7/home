@@ -51,7 +51,9 @@ public class ItemServiceImpl implements ItemService {
 
         if (items.size() > 5) discount = 50;
 
+        newOrder.setTotalSum((long) (sum / 100 * discount));
 
+        orderRepository.save(newOrder);
 
     }
 
