@@ -24,10 +24,15 @@ import java.util.Set;
 public class Item {
 
     @Id
+    @GeneratedValue(generator = "sqn_item", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "sqn_item", sequenceName = "SQN_ITEM", allocationSize = 1)
     private Long id;
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "price")
+    private Long price;
 
     @OneToMany(mappedBy = "item")
     Set<ItemAndOrder> itemAndOrders = new HashSet<>();

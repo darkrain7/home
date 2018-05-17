@@ -19,6 +19,8 @@ import javax.persistence.*;
 public class ItemAndOrder {
 
     @Id
+    @GeneratedValue(generator = "sqn_item_and_order", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "sqn_item_and_order", sequenceName = "SQN_ITEM_AND_ORDER", allocationSize = 1)
     private Long id;
 
     @ManyToOne

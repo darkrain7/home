@@ -12,6 +12,7 @@ public class ItemConverter {
         Item item = Item.builder()
                 .id(fromObject.getId())
                 .name(fromObject.getName())
+                .price(fromObject.getPrice())
                 .build();
         return item;
     }
@@ -20,6 +21,7 @@ public class ItemConverter {
         ItemDto itemDto = ItemDto.builder()
                 .id(fromObject.getId())
                 .name(fromObject.getName())
+                .price(fromObject.getPrice())
                 .build();
 
         return itemDto;
