@@ -2,7 +2,7 @@ package test.home.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import test.home.converter.ItemToItemDtoConverter;
+import test.home.converter.ItemConverter;
 import test.home.dto.ItemDto;
 import test.home.repository.ItemRepository;
 
@@ -22,6 +22,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemDto getItem(Long id) {
-        return ItemToItemDtoConverter.convert(itemRepository.findById(id));
+        return ItemConverter.convertToDto(itemRepository.findById(id));
     }
 }
