@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
+import test.home.entity.Author;
 
 /**
  * Created by User on 17.05.2018.
@@ -15,8 +16,8 @@ import lombok.experimental.Builder;
 public class ItemDto {
 
     private Long id;
-
     private String name;
-
-    private Long price;
+    private String genre;
+    private String titleImg;
+    private Author author;
 }

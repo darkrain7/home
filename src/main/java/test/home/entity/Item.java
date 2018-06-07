@@ -7,8 +7,6 @@ import lombok.Setter;
 import lombok.experimental.Builder;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by User on 17.05.2018.
@@ -31,9 +29,14 @@ public class Item {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private Long price;
+    @Column(name = "genre")
+    private String genre;
 
-    @OneToMany(mappedBy = "item")
-    Set<ItemAndOrder> itemAndOrders = new HashSet<>();
+    @Column(name = "title_img")
+    private String titleImg;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+
 }
