@@ -1,6 +1,7 @@
 package test.home.service;
 
 import test.home.dto.ItemDto;
+import test.home.entity.Item;
 
 import java.util.Collection;
 
@@ -12,4 +13,6 @@ public interface ItemService {
     ItemDto getItem(Long id);
 
     Collection<ItemDto> getAll();
+
+    void init();
 }

@@ -8,10 +8,11 @@ import static test.home.converter.ItemConverter.convertListToDto;
 import static test.home.converter.ItemConverter.convertToDto;
 
 import test.home.dto.ItemDto;
+import test.home.entity.Author;
 import test.home.entity.Item;
+import test.home.repository.AuthorRepository;
 import test.home.repository.ItemRepository;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -23,10 +24,12 @@ import java.util.Collection;
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
+    private final AuthorRepository authorRepository;
 
     @Autowired
-    public ItemServiceImpl(ItemRepository itemRepository) {
+    public ItemServiceImpl(ItemRepository itemRepository, AuthorRepository authorRepository) {
         this.itemRepository = itemRepository;
+        this.authorRepository = authorRepository;
     }
 
     @Override
@@ -36,6 +39,24 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Collection<ItemDto> getAll() {
-        return convertListToDto(itemRepository.findAll());
+         return convertListToDto(itemRepository.findAll());
+    }
+
+    @Override
+    public void init() {
+        Author author = Author.builder().name("Test name Author").build();
+        authorRepository.save(author);
+        Item item1 = Item.builder().name("Test name 1")
+                .genre("Genre 1")
+                .titleImg("Img 1")
+                .author(author)
+                .build();
+        itemRepository.save(item1);
+        Item item2 = Item.builder().name("Name 2")
+                .genre("Genre 2")
+                .titleImg("Img 2")
+                .author(author)
+                .build();
+        itemRepository.save(item2);
     }
 }

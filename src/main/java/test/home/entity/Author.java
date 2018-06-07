@@ -1,5 +1,6 @@
 package test.home.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,5 +33,6 @@ public class Author {
     private String name;
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private Set<Item> items = new HashSet<>();
 }
