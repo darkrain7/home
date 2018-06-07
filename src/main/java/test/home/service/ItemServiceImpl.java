@@ -43,6 +43,24 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public ItemDto changeRating(Long id, double rate) {
+        Item currentItem = itemRepository.findById(id);
+
+        double currentItemRating  = currentItem.getRating();
+        Long countVoice = currentItem.getCountVoice();
+
+        double newRate = (currentItemRating * countVoice + rate) / (countVoice + 1);
+        Long newCountVoice = countVoice + 1;
+
+        currentItem.setRating(newRate);
+        currentItem.setCountVoice(newCountVoice);
+
+        itemRepository.save(currentItem);
+
+        return convertToDto(currentItem);
+    }
+
+    @Override
     public void init() {
         Author author = Author.builder().name("Test name Author").build();
         authorRepository.save(author);

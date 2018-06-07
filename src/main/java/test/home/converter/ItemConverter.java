@@ -17,6 +17,8 @@ public class ItemConverter {
                 .name(fromObject.getName())
                 .genre(fromObject.getGenre())
                 .titleImg(fromObject.getTitleImg())
+                .rating(fromObject.getRating())
+                .countVoice(fromObject.getCountVoice())
                 .author(fromObject.getAuthor())
                 .build();
         return item;
@@ -28,6 +30,8 @@ public class ItemConverter {
                 .name(fromObject.getName())
                 .genre(fromObject.getGenre())
                 .titleImg(fromObject.getTitleImg())
+                .rating(fromObject.getRating())
+                .countVoice(fromObject.getCountVoice())
                 .author(fromObject.getAuthor())
                 .build();
 

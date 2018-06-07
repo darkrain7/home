@@ -35,6 +35,12 @@ public class Item {
     @Column(name = "title_img")
     private String titleImg;
 
+    @Column(name = "rating")
+    private double rating;
+
+    @Column(name = "count_voice")
+    private Long countVoice;
+
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;

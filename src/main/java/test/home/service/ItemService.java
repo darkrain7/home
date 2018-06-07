@@ -14,5 +14,7 @@ public interface ItemService {
 
     Collection<ItemDto> getAll();
 
+    ItemDto changeRating (Long id, double rate);
+
     void init();
 }

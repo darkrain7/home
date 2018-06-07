@@ -19,5 +19,7 @@ public class ItemDto {
     private String name;
     private String genre;
     private String titleImg;
+    private double rating;
+    private Long countVoice;
     private Author author;
 }

@@ -30,8 +30,14 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public ItemDto findById(@PathVariable(name = "id") long id) {
+    public ItemDto findById(@PathVariable(name = "id") Long id) {
         return itemService.getItem(id);
+    }
+
+    @RequestMapping(value = "/changeRate/{id}/{rate}", method = RequestMethod.GET)
+    public ItemDto changeRate(@PathVariable(name = "id") Long id,
+                              @PathVariable(name = "rate") double rate) {
+        return itemService.changeRating(id, rate);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
