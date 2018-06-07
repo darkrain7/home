@@ -8,7 +8,6 @@ import static test.home.converter.ItemConverter.convertListToDto;
 import static test.home.converter.ItemConverter.convertToDto;
 
 import test.home.dto.ItemDto;
-import test.home.entity.Author;
 import test.home.entity.Item;
 import test.home.repository.AuthorRepository;
 import test.home.repository.ItemRepository;
@@ -25,6 +24,7 @@ public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
     private final AuthorRepository authorRepository;
+//    private final SuperItemRepository superItemRepository;
 
     @Autowired
     public ItemServiceImpl(ItemRepository itemRepository, AuthorRepository authorRepository) {
@@ -47,10 +47,10 @@ public class ItemServiceImpl implements ItemService {
         Item currentItem = itemRepository.findById(id);
 
         double currentItemRating  = currentItem.getRating();
-        Long countVoice = currentItem.getCountVoice();
+        Long currentCountVoice = currentItem.getCountVoice();
 
-        double newRate = (currentItemRating * countVoice + rate) / (countVoice + 1);
-        Long newCountVoice = countVoice + 1;
+        double newRate = (currentItemRating * currentCountVoice + rate) / (currentCountVoice + 1);
+        Long newCountVoice = currentCountVoice + 1;
 
         currentItem.setRating(newRate);
         currentItem.setCountVoice(newCountVoice);
@@ -58,23 +58,5 @@ public class ItemServiceImpl implements ItemService {
         itemRepository.save(currentItem);
 
         return convertToDto(currentItem);
-    }
-
-    @Override
-    public void init() {
-        Author author = Author.builder().name("Test name Author").build();
-        authorRepository.save(author);
-        Item item1 = Item.builder().name("Test name 1")
-                .genre("Genre 1")
-                .titleImg("Img 1")
-                .author(author)
-                .build();
-        itemRepository.save(item1);
-        Item item2 = Item.builder().name("Name 2")
-                .genre("Genre 2")
-                .titleImg("Img 2")
-                .author(author)
-                .build();
-        itemRepository.save(item2);
     }
 }
